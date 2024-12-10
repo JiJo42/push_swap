@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 09:32:42 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/05 10:32:32 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/10 11:07:16 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,21 +32,34 @@ RM			=	rm -f
 CC			=	cc
 NAME		=	push_swap
 NAME_B		=	checker
+NAME_LIBOP	=	operation.a
 #----------------------------#
-OBJ_DIR		=	obj
-OBJB_DIR	=	objb
+OBJ_DIR			=	obj
+OBJB_DIR		=	objb
+OBJ_LIBOP_DIR	=	objop
 #----------------------------#
-SRC_DIR		=	source
-SRC_DIRB	=	source_bonus
+SRC_DIR			=	source
+SRCB_DIR		=	source_bonus
+SRC_LIBOP_DIR	=	operations
 #----------------------------#
 HEADER		=	libft/libft.h
 #-Source-------------------------------#
-SRC			= 	push_swap.c
-#--------------------------------------#	
+SRC			= 	push_swap.c					\
+				push_swap_parsing.c			\
+				push_swap_stack_utils.c		\
+				push_swap_parsing_utils.c	\
+				push_swap_utils.c
+
+SRC_OP		=	push.c			\
+				swap.c			\
+				rotate.c		\
+				reverse_rotate.c
+	
 SRCB		=	checker_bonus.c
 #-Object----------------------------------------------#
 OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 OBJB		=	$(addprefix $(OBJB_DIR)/, $(SRCB:.c=.o))
+OBJ_LIBOP	=	$(addprefix $(OBJ_LIBOP_DIR)/, $(SRC_OP:.c=.o))
 #-Progress-vars----------------------------------------------------------------------------------------------------------#
 SRC_COUNT_TOT := $(shell expr $(shell echo -n $(SRC) | wc -w) - $(shell ls -l $(OBJ_DIR) 2>&1 | grep ".o" | wc -l) + 1)
 ifeq ($(shell test $(SRC_COUNT_TOT) -le 0; echo $$?),0)
@@ -82,6 +95,15 @@ $(OBJB_DIR)/%.o: 	$(SRC_DIRB)/%.c | $(OBJB_DIR)
 					$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says :$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 					$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
 
+$(OBJB_DIR)/%.o: 	$(SRC_DIRB)/%.c | $(OBJB_DIR)
+					$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
+					$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says :$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
+					$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
+
+operation		:	$(SRC_DIR)/%.c | $(OBJ_DIR)
+					$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
+					$(PRINTF) "\r%100s\r$(GRAY)libft says :$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+					$(CC) $(CFLAGS)  -c $< -o $@
 
 bonus			:	$(OBJB)
 #					$(RM) -r $(OBJ_DIR)
@@ -96,6 +118,9 @@ $(OBJ_DIR)		:
 
 $(OBJB_DIR)		:
 					mkdir -p $(OBJB_DIR)
+
+$(OBJ_LIBOP_DIR):	
+					mkdir -p $(OBJ_LIBOP)
 					
 clean			:
 					$(RM) -r $(OBJ_DIR)
@@ -121,4 +146,4 @@ fclean			:	clean
 
 re				:	fclean all
 
-.PHONY			:	all clean fclean re
+.PHONY			:	all clean fclean re bonus operation

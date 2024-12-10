@@ -6,12 +6,13 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/06 08:04:06 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/10 10:46:37 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*create and return a new stack element*/
 t_stack	*ft_stacknew(int content)
 {
 	t_stack	*element;
@@ -21,23 +22,26 @@ t_stack	*ft_stacknew(int content)
 		return (NULL);
 	element->number = content;
 	element->next = NULL;
+	element->previous = NULL;
 	return (element);
 }
 
+/*add an element to the stack*/
 void	ft_stackadd(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
-	if (stack)
-	{
 		last = ft_stacklast(*stack);
 		if (!last)
 			*stack = new;
 		else
+		{
 			last->next = new;
-	}
+			new->previous = last;
+		}
 }
 
+/*find and return the last element of a stack*/
 t_stack	*ft_stacklast(t_stack *stack)
 {
 	if (stack == NULL)
@@ -47,6 +51,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 	return (stack);
 }
 
+/*clear the stack*/
 void	ft_stackclear(t_stack **stack)
 {
 	t_stack	*tmp;

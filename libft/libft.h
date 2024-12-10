@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 13:52:24 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/02 10:19:11 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/09 10:43:37 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_list
 
 size_t	ft_strlen(const char *str);
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 char	*ft_strnstr(const char *str, const char *to_find, size_t len);

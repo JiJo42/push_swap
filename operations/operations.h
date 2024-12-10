@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   operations.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/09 12:30:09 by dleclerc         ###   ########.fr       */
+/*   Created: 2024/12/10 09:13:12 by dleclerc          #+#    #+#             */
+/*   Updated: 2024/12/10 10:14:02 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef OPERATIONS_H
+# define OPERATIONS_H
 
-/*clear a **string*/
-void	freetab(char **tab)
-{
-	int	i;
+# include "../push_swap.h"
+# include "../../libft/libft.h"
 
-	i = 0;
-	while (tab[i] != NULL)
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
-}
+/*in: swap*/
+void	swap_a(t_stack **stack_a);
+void	swap_b(t_stack **stack_b);
+void	swap_both(t_stack **stack_a, t_stack **stack_b);
+
+/*in: push*/
+
+/*in: rotate*/
+/*in: reverse_rotate*/
+#endif

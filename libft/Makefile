@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 09:56:45 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/02 11:07:05 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/09 10:59:48 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,6 +52,7 @@ do_clean 	:= 	1
 # Source
 SRC			=	ft_strlen.c			\
 				ft_atoi.c			\
+				ft_atol.c			\
 				ft_strlcpy.c		\
 				ft_strlcat.c		\
 				ft_strnstr.c		\
