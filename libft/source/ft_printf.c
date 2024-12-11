@@ -6,11 +6,11 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 11:26:24 by jijo              #+#    #+#             */
-/*   Updated: 2024/11/18 10:04:33 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:15:03 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../printf_utils/ft_printf.h"
+#include "printf_dir/ft_printf.h"
 
 static int	ft_makeformat(va_list args, char c)
 {

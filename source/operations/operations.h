@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:13:12 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/11 08:19:04 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:08:59 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define OPERATIONS_H
 
 # include <unistd.h>
-# include "push_swap.h"
+# include "../push_swap.h"
 
 /*in: swap*/
 void	swap_a(t_stack **stack_a);

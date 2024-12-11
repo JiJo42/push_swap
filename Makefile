@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 09:32:42 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/11 07:35:03 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/11 13:29:16 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@
 ifndef VERBOSE
 .SILENT:
 endif
+
+
+
 #-Color--------------#
 DEFAULT	=	\033[0;39m
 GRAY	=	\033[0;90m
@@ -24,54 +27,66 @@ BLUE	=	\033[0;94m
 MAGENTA	=	\033[0;95m
 CYAN	=	\033[0;96m
 WHITE 	=	\033[0;97m
+
+
+
 #-Variable-----------------------------#
 PRINTF		=	printf
 CFLAGS		=	-Wall -Wextra -Werror -g
 RM			=	rm -f
 CC			=	cc
-NAME		=	push_swap
-NAME_B		=	checker
 #-//---------------------------#
-OBJ_DIR			=	obj
-OBJB_DIR		=	objb
+NAME		=	push_swap
+NAMEB		=	checker
 #-//---------------------------#
 SRC_DIR			=	source
 SRCB_DIR		=	source_bonus
+BUILD_DIR		=	object
+BUILD_DIRB		=	object_bonus
 #-//---------------------------#
 HEADER		=	libft/libft.h
-#-Source------------------------------------#
-SRC			= 	push_swap.c					\
-				push_swap_parsing.c			\
-				push_swap_stack_utils.c		\
-				push_swap_parsing_utils.c	\
-				push_swap_utils.c			\
-				swap.c						\
-				push.c						\
-				rotate.c					\
-				reverse_rotate.c
-#-Source-Bonus------------------------------#
-SRCB		=	checker_bonus.c
+
+
+
+#-Source----------------------------------------------#
+SRC			= 	source/push_swap.c					\
+				source/push_swap_parsing.c			\
+				source/push_swap_stack_utils.c		\
+				source/push_swap_parsing_utils.c	\
+				source/push_swap_utils.c			\
+				source/operations/swap.c			\
+				source/operations/push.c			\
+				source/operations/rotate.c			\
+				source/operations/reverse_rotate.c
 #-Object----------------------------------------------#
-OBJ			=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
-OBJB		=	$(addprefix $(OBJB_DIR)/, $(SRCB:.c=.o))
-#-Progress-vars----------------------------------------------------------------------------------------------------------#
-SRC_COUNT_TOT := $(shell expr $(shell echo -n $(SRC) | wc -w) - $(shell ls -l $(OBJ_DIR) 2>&1 | grep ".o" | wc -l) + 1)
-ifeq ($(shell test $(SRC_COUNT_TOT) -le 0; echo $$?),0)
-	SRC_COUNT_TOT := $(shell echo -n $(SRC) | wc -w)
-endif
+OBJ			=	${SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o}
+DIRS		=	$(sort $(shell dirname $(OBJ)))
+
+
+
+#-Source-Bonus----------------------------------------#
+SRCB		=	checker_bonus.c
+#-Object-BONUS----------------------------------------#
+OBJB		=	${SRCB:$(SRCB_DIR)/%.c=$(BUILD_DIR)/%.o}
+DIRSB		=	$(sort $(shell dirname $(OBJB)))
+
+
+
+#-Progress-vars-----------------------------------------------------#
+SRC_COUNT_TOT := $(shell echo -n $(SRC) | wc -w)
 SRC_COUNT := 0
 SRC_PCT = $(shell expr 100 \* $(SRC_COUNT) / $(SRC_COUNT_TOT))
-#-Progress-vars-bonus-----------------------------------------------------------------------------------------------------#
-SRCB_COUNT_TOT := $(shell expr $(shell echo -n $(SRCB) | wc -w) - $(shell ls -l $(OBJB_DIR) 2>&1 | grep ".o" | wc -l) + 1)
-ifeq ($(shell test $(SRCB_COUNT_TOT) -le 0; echo $$?),0)
-	SRCB_COUNT_TOT := $(shell echo -n $(SRCB) | wc -w)
-endif
+#-Progress-vars-bonus-----------------------------------------------#
+SRCB_COUNT_TOT := $(shell echo -n $(SRCB) | wc -w)
 SRCB_COUNT := 0
 SRCB_PCT = $(shell expr 100 \* $(SRCB_COUNT) / $(SRCB_COUNT_TOT))
+
+
+
 #-Rule-------------------------------------------------------------------------------------------------------------------#
 all				:	$(NAME)
 
-$(NAME)			:	$(OBJ) $(OBJ2)
+$(NAME)			:	$(OBJ)
 #					$(RM) bonus
 #					$(RM) -r $(OBJB_DIR)
 					$(PRINTF) "\n"
@@ -84,18 +99,21 @@ $(NAME)			:	$(OBJ) $(OBJ2)
 					sleep 0.4
 					$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(CYAN)$(NAME)$(GREEN) is up to date!\n$(DEFAULT)"
+					
+$(BUILD_DIR)/%.o	:	$(SRC_DIR)/%.c | $(DIRS)
+						$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
+						$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says: \t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+						$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
 
-$(OBJ_DIR)/%.o	:	$(SRC_DIR)/%.c | $(OBJ_DIR)
-					$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
-					$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says: \t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
-					$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
+$(DIRS)		:
+					mkdir -p $@
 
-$(OBJ_DIR)		:
-					mkdir -p $(OBJ_DIR)
+
+					
 #-Rule-Bonus------------------------------------------------------------------------------------------------------------#
 bonus			:	$(OBJB)
-#					$(RM) -r $(OBJ_DIR)
-					touch bonus
+#					$(RM) bonus
+#					$(RM) -r $(OBJB_DIR)
 					$(PRINTF) "\n"
 					sleep 0.2
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(GREEN)make dependencies$(DEFAULT)\n"
@@ -104,20 +122,23 @@ bonus			:	$(OBJB)
 					sleep 0.2
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(GREEN)dependencies done$(DEFAULT)\n"
 					sleep 0.4
-					$(CC) $(CFLAGS) $(OBJB) libft/libft.a -o $(NAME_B)
-					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(CYAN)$(NAME_B)$(GREEN) is up to date!\n$(DEFAULT)"
-					
-$(OBJB_DIR)/%.o: 	$(SRC_DIRB)/%.c | $(OBJB_DIR)
-					$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
-					$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says: \t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
-					$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
+					$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(CYAN)$(NAMEB)$(GREEN) is up to date!\n$(DEFAULT)"
 
-$(OBJB_DIR)		:
-					mkdir -p $(OBJB_DIR)
+$(BUILD_DIRB)/%.o	:	$(SRC_DIRB)/%.c | $(DIRSB)
+						$(eval SRC_COUNT = $(shell expr $(SRCB_COUNT) + 1))
+						$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says: \t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
+						$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
+
+$(DIRSB)		:
+					mkdir -p $@
+
+
+					
 #-Rule-Cleaning---------------------------------------------------------------------------------------------------------#
 clean			:
-					$(RM) -r $(OBJ_DIR)
-					$(RM) -r $(OBJB_DIR)
+					$(RM) -r $(BUILD_DIR)
+					$(RM) -r $(BUILD_DIRB)
 					$(PRINTF) "$(GRAY)$(NAME) says: \t$(YELLOW)_*#*__$(CYAN)Cleaning up object$(YELLOW)__*#*_"
 					sleep 0.6
 					$(PRINTF) "\r\r$(GRAY)$(NAME) says: \t$(YELLOW)_*#*_🧹_*#*_🧹_*#*_*#*_*#*_*#*_"
@@ -137,11 +158,14 @@ fclean			:	clean
 					sleep 0.3
 					make do_clean=0 fclean -C libft --silent
 
-re				:	fclean all
+re				: fclean all
+
+
+
 #-Rule-No-Dependencies------------------------------------------------------------------------------------------------------#
 clean_nodp		:
-					$(RM) -r $(OBJ_DIR)
-					$(RM) -r $(OBJB_DIR)
+					$(RM) -r $(BUILD_DIR)
+					$(RM) -r $(BUILD_DIRB)
 					sleep 0.3
 					$(PRINTF) "\r\r$(GRAY)$(NAME) says: \t$(YELLOW)____________clean_🧹___________\n\n$(DEFAULT)"
 					sleep 0.3
@@ -153,5 +177,8 @@ fclean_nodp		:	clean_nodp
 					sleep 0.3
 
 re_nodp			:	fclean_nodp all
+
+
+
 #-PHONY----------------------------------------------------------------------#
 .PHONY			:	all clean clean_nodp fclean fclean_nodp re re_nodp bonus

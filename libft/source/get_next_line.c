@@ -6,11 +6,11 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 09:05:25 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/11/18 10:06:22 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:14:49 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../gnl_utils/get_next_line.h"
+#include "gnl_dir/get_next_line.h"
 
 char	*get_next_line(int fd)
 {
