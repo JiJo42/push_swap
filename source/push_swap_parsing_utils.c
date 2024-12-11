@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/09 13:05:04 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 08:29:09 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*transform and return the argument to a valid integer
 if invalid (double or no direct operator) return ERROR*/
-int	ft_atoi_ps(const char *str)
+int	atoi_ps(const char *str)
 {
 	int	i;
 	int	negativ;
@@ -46,7 +46,7 @@ int	ft_atoi_ps(const char *str)
 void	parsing_exit(t_stack **stack, char **split, int code)
 {
 	if (stack)
-		ft_stackclear(stack);
+		stackclear(stack);
 	if (split)
 		freetab(split);
 	if (code == ERROR)

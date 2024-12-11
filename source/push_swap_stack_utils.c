@@ -6,14 +6,14 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/10 10:46:37 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 08:30:23 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 /*create and return a new stack element*/
-t_stack	*ft_stacknew(int content)
+t_stack	*stacknew(int content)
 {
 	t_stack	*element;
 
@@ -27,11 +27,11 @@ t_stack	*ft_stacknew(int content)
 }
 
 /*add an element to the stack*/
-void	ft_stackadd(t_stack **stack, t_stack *new)
+void	stackadd(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
-		last = ft_stacklast(*stack);
+		last = stacklast(*stack);
 		if (!last)
 			*stack = new;
 		else
@@ -42,7 +42,7 @@ void	ft_stackadd(t_stack **stack, t_stack *new)
 }
 
 /*find and return the last element of a stack*/
-t_stack	*ft_stacklast(t_stack *stack)
+t_stack	*stacklast(t_stack *stack)
 {
 	if (stack == NULL)
 		return (NULL);
@@ -52,7 +52,7 @@ t_stack	*ft_stacklast(t_stack *stack)
 }
 
 /*clear the stack*/
-void	ft_stackclear(t_stack **stack)
+void	stackclear(t_stack **stack)
 {
 	t_stack	*tmp;
 
@@ -66,4 +66,17 @@ void	ft_stackclear(t_stack **stack)
 		}
 		stack = NULL;
 	}
+}
+
+int	stacksize(t_stack *stack)
+{
+	int		i;
+
+	i = 0;
+	while (stack != NULL)
+	{
+		stack = stack->next;
+		i++;
+	}
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/10 10:54:40 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 08:30:53 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,14 +60,14 @@ static void	check_and_add_split(char **split, t_stack **stack_a)
 	index = 0;
 	while (split[index])
 	{
-		atoi = ft_atoi_ps(split[index]);
+		atoi = atoi_ps(split[index]);
 		atol = ft_atol(split[index]);
-		if (atoi == -1 || atoi != atol)
+		if (atoi == ERROR || atoi != atol)
 			parsing_exit(stack_a, split, ERROR);
-		new = ft_stacknew(atoi);
+		new = stacknew(atoi);
 		if (!new)
 			parsing_exit(stack_a, split, MEMORY_ERROR);
-		ft_stackadd(stack_a, new);
+		stackadd(stack_a, new);
 		index++;
 	}
 }
@@ -90,7 +90,7 @@ static void	check_double(t_stack *stack_a)
 
 /*check if all the arguments are available for the program
 (are a valid interger and no double) and return the created stack_a*/
-t_stack	**parsing(int argc, char **argv)
+t_stack	**parsing_ps(int argc, char **argv)
 {
 	t_stack	**stack_a;
 	t_stack	*first;

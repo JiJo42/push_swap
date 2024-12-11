@@ -6,16 +6,12 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/10 10:19:11 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/11 08:30:59 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-
-# include <unistd.h>
-# include "../libft/libft.h"
-//# include "operations/operations.h"
 
 # define NO_ERROR 0
 # define ERROR -1
@@ -28,18 +24,23 @@ typedef struct s_stack
 	struct s_stack	*previous;
 }	t_stack;
 
+# include <unistd.h>
+# include "../libft/libft.h"
+# include "operations.h"
+
 /*in: push_swap_parsing*/
-t_stack	**parsing(int argc, char **argv);
+t_stack	**parsing_ps(int argc, char **argv);
 
 /*in: push_swap_parsing_utils*/
-int		ft_atoi_ps(const char *str);
+int		atoi_ps(const char *str);
 void	parsing_exit(t_stack **stack, char **split, int code);
 
 /*in: push_swap_stack_utils*/
-t_stack	*ft_stacknew(int content);
-t_stack	*ft_stacklast(t_stack *stack);
-void	ft_stackadd(t_stack **stack, t_stack *new);
-void	ft_stackclear(t_stack **stack);
+t_stack	*stacknew(int content);
+t_stack	*stacklast(t_stack *stack);
+void	stackadd(t_stack **stack, t_stack *new);
+void	stackclear(t_stack **stack);
+int		stacksize(t_stack *stack);
 
 /*in: push_swap_utils*/
 void	freetab(char **tab);

@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 09:56:45 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/09 10:59:48 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/10 11:50:14 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,11 +131,11 @@ all					:	$(NAME)
 $(NAME)				:	$(OBJ) $(OBJ_PF) $(OBJ_PFFD) $(OBJ_GNL)
 					$(PRINTF) "\n\n"
 					ar -rc $(NAME) $(OBJ) $(OBJ_PFFD) $(OBJ_PF) $(OBJ_GNL)
-					$(PRINTF) "$(GRAY)libft says : $(CYAN)$(NAME)$(GREEN) is up to date!\n$(DEFAULT)"
+					$(PRINTF) "$(GRAY)libft says: \t\t$(CYAN)$(NAME)$(GREEN) is up to date!\n$(DEFAULT)"
 			
 $(OBJ_DIR)/%.o		:	$(SRC_DIR)/%.c | $(OBJ_DIR)
 					$(eval SRC_COUNT = $(shell expr $(SRC_COUNT) + 1))
-					$(PRINTF) "\r%100s\r$(GRAY)libft says :$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
+					$(PRINTF) "\r%100s\r$(GRAY)libft says: \t\t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRC_COUNT) $(SRC_COUNT_TOT) $(SRC_PCT)
 					$(CC) $(CFLAGS)  -c $< -o $@
 
 $(OBJ_PF_DIR)/%.o	:	$(SRC_PF_DIR)/%.c | $(OBJ_PF_DIR)
@@ -164,22 +164,22 @@ clean				:
 					$(RM) -r $(OBJ_PF_DIR)
 					$(RM) -r $(OBJ_PFFD_DIR)
 					$(RM) -r $(OBJ_GNL_DIR)			
-					$(PRINTF) "$(GRAY)libft says : $(YELLOW)_*#*__$(CYAN)Cleaning up object$(YELLOW)__*#*_"
-					sleep 0.8
-					$(PRINTF) "\r\r$(GRAY)libft says : $(YELLOW)_*#*_🧹_*#*_🧹_*#*_*#*_*#*_*#*_"
-					sleep 0.4
-					$(PRINTF) "\r\r$(GRAY)libft says : $(YELLOW)_________*#*_🧹_*#*_🧹_*#*_*#*_"
-					sleep 0.4
-					$(PRINTF) "\r\r$(GRAY)libft says : $(YELLOW)_________________*#*_🧹_*#*_🧹_"
-					sleep 0.4
-					$(PRINTF) "\r\r$(GRAY)libft says : $(YELLOW)____________clean_🧹___________\n\n$(DEFAULT)"
-					sleep 0.4
+					$(PRINTF) "$(GRAY)libft says : \t\t$(YELLOW)_*#*__$(CYAN)Cleaning up object$(YELLOW)__*#*_"
+					sleep 0.6
+					$(PRINTF) "\r\r$(GRAY)libft says : \t\t$(YELLOW)_*#*_🧹_*#*_🧹_*#*_*#*_*#*_*#*_"
+					sleep 0.3
+					$(PRINTF) "\r\r$(GRAY)libft says : \t\t$(YELLOW)_________*#*_🧹_*#*_🧹_*#*_*#*_"
+					sleep 0.3
+					$(PRINTF) "\r\r$(GRAY)libft says : \t\t$(YELLOW)_________________*#*_🧹_*#*_🧹_"
+					sleep 0.3
+					$(PRINTF) "\r\r$(GRAY)libft says : \t\t$(YELLOW)____________clean_🧹___________\n\n$(DEFAULT)"
+					sleep 0.3
 					
 fclean				:
 					if [ $(do_clean) -eq 1 ]; then  make clean --silent; fi
 					$(RM) $(NAME)
-					$(PRINTF) "$(GRAY)libft says : $(MAGENTA)🌀 Sending $(CYAN)$(NAME)$(MAGENTA) to the void 🌀\n\n$(DEFAULT)"
-					sleep 0.4
+					$(PRINTF) "$(GRAY)libft says: \t\t$(MAGENTA)🌀 Sending $(CYAN)$(NAME)$(MAGENTA) to the void 🌀\n\n$(DEFAULT)"
+					sleep 0.3
 
 re					:	fclean all
 
