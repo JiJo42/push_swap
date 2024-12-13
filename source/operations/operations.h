@@ -6,12 +6,25 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:13:12 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/11 12:08:59 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/13 09:23:13 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATIONS_H
 # define OPERATIONS_H
+
+/*define code for more efficient print of operations*/
+# define sa "sa\n"
+# define sb "sb\n"
+# define ss "ss\n"
+# define pa "pa\n"
+# define pb "pb\n"
+# define ra	"ra\n"
+# define rb "rb\n"
+# define rr "rr\n"
+# define rra "rra\n"
+# define rrb "rrb\n"
+# define rrr "rrr\n"
 
 # include <unistd.h>
 # include "../push_swap.h"

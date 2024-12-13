@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/12 09:12:02 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/13 14:53:06 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ int		stacksize(t_stack *stack);
 
 /*in: push_swap_utils*/
 void	freetab(char **tab);
+
+
+void	sort_3(t_stack **stack_a);
 
 #endif

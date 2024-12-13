@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 09:32:42 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/12 08:31:46 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/13 15:18:51 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ HEADER		=	libft/libft.h
 
 #-Source----------------------------------------------#
 SRC			= 	source/push_swap.c					\
+				source/for_three.c					\
 				source/push_swap_parsing.c			\
 				source/push_swap_stack_utils.c		\
 				source/push_swap_parsing_utils.c	\

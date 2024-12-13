@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/12 09:12:36 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/13 15:48:58 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ static void	check_double(t_stack *stack_a)
 {
 	t_stack	*be_check;
 	t_stack	*check_by;
-	 
+	 //a reparer (double while + faire un check de deja trier)
 	be_check = stack_a;
 	while (be_check->next)
 	{
@@ -89,7 +89,8 @@ static void	check_double(t_stack *stack_a)
 }
 
 /*check if all the arguments are available for the program
-(are a valid interger and no double) and return the created stack_a*/
+(are a valid interger and no double) and if the stack are already sort
+return the created stack_a if not exit(unavailable or already sort)*/
 void	parsing_ps(int argc, char **argv, t_stack **stack_a)
 {
 	char	**split;
