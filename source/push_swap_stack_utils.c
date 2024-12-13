@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/11 08:30:23 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/12 09:07:01 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	stackadd(t_stack **stack, t_stack *new)
 {
 	t_stack	*last;
 
+	if (stack)
+	{
 		last = stacklast(*stack);
 		if (!last)
 			*stack = new;
@@ -39,6 +41,7 @@ void	stackadd(t_stack **stack, t_stack *new)
 			last->next = new;
 			new->previous = last;
 		}
+	}
 }
 
 /*find and return the last element of a stack*/

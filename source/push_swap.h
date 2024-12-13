@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/11 12:08:53 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/12 09:12:02 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_stack
 # include "operations/operations.h"
 
 /*in: push_swap_parsing*/
-t_stack	**parsing_ps(int argc, char **argv);
+void	parsing_ps(int argc, char **argv, t_stack **stack_a);
 
 /*in: push_swap_parsing_utils*/
 int		atoi_ps(const char *str);

@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/11 08:30:53 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/12 09:12:36 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,15 +90,11 @@ static void	check_double(t_stack *stack_a)
 
 /*check if all the arguments are available for the program
 (are a valid interger and no double) and return the created stack_a*/
-t_stack	**parsing_ps(int argc, char **argv)
+void	parsing_ps(int argc, char **argv, t_stack **stack_a)
 {
-	t_stack	**stack_a;
-	t_stack	*first;
 	char	**split;
 	int		index;
 
-	first = NULL;
-	stack_a = &first;
 	index = 1;
 	while (index < argc)
 	{ 
@@ -109,5 +105,4 @@ t_stack	**parsing_ps(int argc, char **argv)
 		index++;
 	}
 	check_double(*stack_a);
-	return (stack_a);
 }
