@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   for_three.c                                        :+:      :+:    :+:   */
+/*   sort_little.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:45:11 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/13 14:53:57 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:11:46 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,43 +32,24 @@ void	sort_3(t_stack **stack_a)
 {
 	t_stack	*head;
 	int		min;
-	int		next_min;
 
 	head = *stack_a;
 	min = get_min(stack_a, -1);
 	next_min = get_min(stack_a, min);
 	if (head->number == min && head->next->number != next_min)
-	{
-		rotate_a(stack_a);
-		swap_a(stack_a);
-		reverse_rotate_a(stack_a);
-		ft_printf("%s%s%s", ra, sa, rra);
-	}
+		do_and_print(stack_a, NULL, 3, ra, sa, rra);
 	else if (head->number == next_min)
 	{
 		if (head->next->number == min)
-		{
-			swap_a(stack_a);
-			ft_printf("%s", sa);
-		}
+			do_and_print(stack_a, NULL, 1, sa);
 		else
-		{
-			reverse_rotate_a(stack_a);
-			ft_printf("%s", rra);
-		}
+			do_and_print(stack_a, NULL, 1, rra);
 	}
 	else
 	{
 		if (head->next->number == min)
-		{
-			rotate_a(stack_a);
-			ft_printf("%s", ra);
-		}
+			do_and_print(stack_a, NULL, 1, ra);
 		else
-		{
-			swap_a(stack_a);
-			reverse_rotate_a(stack_a);
-			ft_printf("%s%s", sa, rra);
-		}
+			do_and_print(stack_a, NULL, 2, sa, rra);
 	}
 }

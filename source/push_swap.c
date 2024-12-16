@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/13 14:58:26 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:17:56 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 		return (0);
 	parsing_ps(argc, argv, &stack_a);
 	stack_b = NULL;
-	//sort_3(&stack_a);
+	check_sort(&stack_a);
+	sort_3(&stack_a);
 	stackclear(&stack_a);
 	stackclear(&stack_b);
 }

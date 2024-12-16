@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_parsing.c                                :+:      :+:    :+:   */
+/*   checker_parsing_bonus.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 13:34:51 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/16 10:58:01 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 /*check if the argument are in ASCII range of an interger (>0,9<,+,-,' ')
 exit if not*/
@@ -60,7 +60,7 @@ static void	check_and_add_split(char **split, t_stack **stack_a)
 	index = 0;
 	while (split[index])
 	{
-		atoi = atoi_ps(split[index]);
+		atoi = atoi_ck(split[index]);
 		atol = ft_atol(split[index]);
 		if (atoi == ERROR || atoi != atol)
 			parsing_exit(stack_a, split, ERROR);
@@ -94,7 +94,7 @@ static void	check_double(t_stack *stack_a)
 
 /*check if all the arguments are available for the program
 (are a valid interger) return the created stack_a or exit if invalid*/
-void	parsing_ps(int argc, char **argv, t_stack **stack_a)
+void	parsing_ck(int argc, char **argv, t_stack **stack_a)
 {
 	char	**split;
 	int		index;

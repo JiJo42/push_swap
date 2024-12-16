@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_stack_utils.c                            :+:      :+:    :+:   */
+/*   checker_stack_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/16 13:25:32 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:20:41 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 /*create and return a new stack element*/
 t_stack	*stacknew(int content)
@@ -71,7 +71,6 @@ void	stackclear(t_stack **stack)
 	}
 }
 
-/*find the stack size*/
 int	stacksize(t_stack *stack)
 {
 	int		i;

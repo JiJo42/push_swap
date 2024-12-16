@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   checker_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/16 13:26:26 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:26:42 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker_bonus.h"
 
 /*clear a **string*/
 void	freetab(char **tab)
@@ -26,8 +26,9 @@ void	freetab(char **tab)
 	free(tab);
 }
 
-/*check if stack are already sort, exit if yes*/
-void	check_sort(t_stack **stack_a)
+/*check if the stack is sort (check before (code = 1) and after (code =2))
+Exit if not*/
+void	check_sort(t_stack **stack_a, t_stack **stack_b, int code)
 {
 	t_stack	*first;
 	t_stack	*second;
@@ -40,22 +41,34 @@ void	check_sort(t_stack **stack_a)
 		first = first->next;
 		second = second->next;
 	}
-	if (!second)
-		ps_exit(stack_a, NULL, NO_ERROR);
+	if (code == 1 && (!second))
+		checker_exit(stack_a, stack_b, OK);
+	else if (code == 2 && second)
+		checker_exit(stack_a, stack_b, KO);
 	else
 		return ;
 }
 
-/*sort clean and put error message*/
-void	ps_exit(t_stack **stack_a, t_stack **stack_b, int code)
+/*exit clear and put message*/
+void	checker_exit(t_stack **stack_a, t_stack **stack_b, int code)
 {
 	if (stack_a)
 		stackclear(stack_a);
 	if (stack_b)
 		stackclear(stack_b);
-	if (code == ERROR)
-		ft_putstr_fd("Error\n", 2);
-	else if (code == MEMORY_ERROR)
-		ft_putstr_fd("Memory Error\n", 2);
-	exit(EXIT_FAILURE);
+	if (code != OK)
+	{
+		if (code == ERROR)
+			ft_putstr_fd("Error\n", 2);
+		else if (code == MEMORY_ERROR)
+			ft_putstr_fd("Memory Error\n", 2);
+		else if (code == KO)
+			ft_putstr_fd("KO\n", 2);
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		ft_putstr_fd("OK\n", 2);
+		exit(EXIT_SUCCESS);
+	}
 }

@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/12 09:32:42 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/13 15:18:51 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/16 16:03:20 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ HEADER		=	libft/libft.h
 
 #-Source----------------------------------------------#
 SRC			= 	source/push_swap.c					\
-				source/for_three.c					\
+				source/sort_little.c				\
 				source/push_swap_parsing.c			\
 				source/push_swap_stack_utils.c		\
 				source/push_swap_parsing_utils.c	\
@@ -58,7 +58,8 @@ SRC			= 	source/push_swap.c					\
 				source/operations/swap.c			\
 				source/operations/push.c			\
 				source/operations/rotate.c			\
-				source/operations/reverse_rotate.c
+				source/operations/reverse_rotate.c	\
+				source/operations/printer.c
 #-Object----------------------------------------------#
 OBJ			=	${SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o}
 DIRS		=	$(sort $(shell dirname $(OBJ)))
@@ -66,9 +67,18 @@ DIRS		=	$(sort $(shell dirname $(OBJ)))
 
 
 #-Source-Bonus----------------------------------------#
-SRCB		=	checker_bonus.c
+SRCB		=	source_bonus/checker_bonus.c				\
+				source_bonus/checker_parsing_bonus.c		\
+				source_bonus/checker_stack_utils_bonus.c	\
+				source_bonus/checker_parsing_utils_bonus.c	\
+				source_bonus/checker_utils_bonus.c			\
+				source_bonus/check_operation_bonus.c		\
+				source_bonus/operations_bonus/swap_bonus.c	\
+				source_bonus/operations_bonus/push_bonus.c	\
+				source_bonus/operations_bonus/rotate_bonus.c\
+				source_bonus/operations_bonus/reverse_rotate_bonus.c
 #-Object-BONUS----------------------------------------#
-OBJB		=	${SRCB:$(SRCB_DIR)/%.c=$(BUILD_DIR)/%.o}
+OBJB		=	${SRCB:$(SRCB_DIR)/%.c=$(BUILD_DIRB)/%.o}
 DIRSB		=	$(sort $(shell dirname $(OBJB)))
 
 
@@ -89,7 +99,7 @@ all				:	$(NAME)
 
 $(NAME)			:	$(OBJ)
 #					$(RM) bonus
-#					$(RM) -r $(OBJB_DIR)
+#					$(RM) -r $(BUILD_BIRB)
 					$(PRINTF) "\n"
 					sleep 0.2
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(GREEN)make dependencies$(DEFAULT)\n"
@@ -110,10 +120,13 @@ $(DIRS)		:
 					mkdir -p $@
 
 
-					
+
 #-Rule-Bonus------------------------------------------------------------------------------------------------------------#
-bonus			:	$(OBJB)
-#					$(RM) -r $(OBJB_DIR)
+bonus			: $(NAMEB)
+
+$(NAMEB)			: $(OBJB)
+#					$(RM) -r $(BUILD_DIR)
+#					touch bonus
 					$(PRINTF) "\n"
 					sleep 0.2
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(GREEN)make dependencies$(DEFAULT)\n"
@@ -122,11 +135,11 @@ bonus			:	$(OBJB)
 					sleep 0.2
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(GREEN)dependencies done$(DEFAULT)\n"
 					sleep 0.4
-					$(CC) $(CFLAGS) $(OBJ) libft/libft.a -o $(NAME)
+					$(CC) $(CFLAGS) $(OBJB) libft/libft.a -o $(NAMEB)
 					$(PRINTF) "$(GRAY)\n$(NAME) says: \t$(CYAN)$(NAMEB)$(GREEN) is up to date!\n$(DEFAULT)"
 
-$(BUILD_DIRB)/%.o	:	$(SRC_DIRB)/%.c | $(DIRSB)
-						$(eval SRC_COUNT = $(shell expr $(SRCB_COUNT) + 1))
+$(BUILD_DIRB)/%.o	:	$(SRCB_DIR)/%.c | $(DIRSB)
+						$(eval SRCB_COUNT = $(shell expr $(SRCB_COUNT) + 1))
 						$(PRINTF) "\r%100s\r$(GRAY)$(NAME) says: \t$(CYAN)[ %d/%d (%d%%) ] $(BLUE)$<$(DEFAULT)" "" $(SRCB_COUNT) $(SRCB_COUNT_TOT) $(SRCB_PCT)
 						$(CC) $(CFLAGS) -I$(HEADER) -c $< -o $@
 
@@ -153,14 +166,15 @@ clean			:
 
 fclean			:	clean
 					$(RM) $(NAME)
-					$(RM) bonus
+					$(RM) $(NAMEB)
+#					$(RM) bonus
 					$(PRINTF) "$(GRAY)$(NAME) says: \t$(MAGENTA)🌀 Sending $(CYAN)$(NAME)$(MAGENTA) to the void 🌀\n\n$(DEFAULT)"
 					sleep 0.3
 					make do_clean=0 fclean -C libft --silent
 
 re				: fclean all
 
-
+re_bonus		: fclean bonus
 
 #-Rule-No-Dependencies------------------------------------------------------------------------------------------------------#
 clean_nodp		:
@@ -172,7 +186,8 @@ clean_nodp		:
 
 fclean_nodp		:	clean_nodp
 					$(RM) $(NAME)
-					$(RM) bonus
+					$(RM) $(NAMEB)
+#					$(RM) bonus
 					$(PRINTF) "$(GRAY)$(NAME) says: \t$(MAGENTA)🌀 Sending $(CYAN)$(NAME)$(MAGENTA) to the void 🌀\n\n$(DEFAULT)"
 					sleep 0.3
 
@@ -181,4 +196,4 @@ re_nodp			:	fclean_nodp all
 
 
 #-PHONY----------------------------------------------------------------------#
-.PHONY			:	all clean clean_nodp fclean fclean_nodp re re_nodp bonus
+.PHONY			:	all clean clean_nodp fclean fclean_nodp re re_nodp bonus re_bonus

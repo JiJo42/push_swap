@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   operations.h                                       :+:      :+:    :+:   */
+/*   operations_bonus.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:13:12 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 15:12:55 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:22:39 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef OPERATIONS_H
-# define OPERATIONS_H
+#ifndef OPERATIONS_BONUS_H
+# define OPERATIONS_BONUS_H
 
 /*define code for more efficient print of operations*/
 # define sa 100
@@ -28,28 +28,25 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "../push_swap.h"
+# include "../checker_bonus.h"
 
-/*in: swap*/
+/*in: swap_bonus*/
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
 void	swap_both(t_stack **stack_a, t_stack **stack_b);
 
-/*in: push*/
+/*in: push_bonus*/
 void	push_a(t_stack **stack_a, t_stack **stack_b);
 void	push_b(t_stack **stack_a, t_stack **stack_b);
 
-/*in: rotate*/
+/*in: rotate_bonus*/
 void	rotate_a(t_stack **stack_a);
 void	rotate_b(t_stack **stack_b);
 void	rotate_both(t_stack **stack_a, t_stack **stack_b);
 
-/*in: reverse_rotate*/
+/*in: reverse_rotate_bonus*/
 void	reverse_rotate_a(t_stack **stack_a);
 void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_both(t_stack **stack_a, t_stack **stack_b);
-
-/*in: printer*/
-void	do_and_print(t_stack **stack_a, t_stack **stack_b, int size, ...);
 
 #endif
