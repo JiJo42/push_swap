@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 13:51:22 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:53:39 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	ps_exit(t_stack **stack_a, t_stack **stack_b, int code);
 
 /*---SORTING---*/
 void	sort_3(t_stack **stack_a);
+void	sort_5(t_stack **stack_a, t_stack **stack_b);
 
 #endif
