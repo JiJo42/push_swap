@@ -6,12 +6,13 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:45:11 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/16 17:08:34 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:48:31 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+/*find the smallest number of the stach and return it*/
 static int	get_min(t_stack **stack)
 {
 	t_stack	*cpy;
@@ -28,32 +29,8 @@ static int	get_min(t_stack **stack)
 	return (min);
 }
 
-void	sort_3(t_stack **stack_a)
-{
-	int	first;
-	int	second;
-	int	third;
-	int	min;
-	
-	first = (*stack_a)->number;
-	second = (*stack_a)->next->number;
-	third = (*stack_a)->next->next->number;
-	min = get_min(stack_a);
-	if (first == min && second > third)
-		do_and_print(stack_a, NULL, 3, ra, sa, rra);
-	else if (((first < third && first > second) || \
-	(first > third && first < second)) && (second > third))
-		do_and_print(stack_a, NULL, 1, rra);
-	else if (((first < third && first > second) || \
-	(first > third && first < second)) && (second < third))
-			do_and_print(stack_a, NULL, 1, sa);
-	else if (first > third && first > second && second < third)
-		do_and_print(stack_a, NULL, 1, ra);
-	else if (first > third && first > second && second > third)
-		do_and_print(stack_a, NULL, 2, sa, rra);
-}
-
-static void	push_first(t_stack **stack_a, t_stack **stack_b)
+/*find and push in b the smallest element of a stack of 5*/
+static void	push_for_5(t_stack **stack_a, t_stack **stack_b)
 {
 	int		min;
 	int		locate;
@@ -79,7 +56,8 @@ static void	push_first(t_stack **stack_a, t_stack **stack_b)
 		do_and_print(stack_a, stack_b, 2, rra, pb);
 }
 
-static void	push_second(t_stack **stack_a, t_stack **stack_b)
+/*find and push in b the smallest element of a stack of 4*/
+static void	push_for_4(t_stack **stack_a, t_stack **stack_b)
 {
 	int		min;
 	int		locate;
@@ -103,10 +81,53 @@ static void	push_second(t_stack **stack_a, t_stack **stack_b)
 		do_and_print(stack_a, stack_b, 2, rra, pb);
 }
 
-void	sort_5(t_stack **stack_a, t_stack **stack_b)
+/*sort a stack of 3 elements by checking all cases and
+performing the adapt resolution solution*/
+static void	sort_3(t_stack **stack)
 {
-	push_first(stack_a, stack_b);
-	push_second(stack_a, stack_b);
-	sort_3(stack_a);
-	do_and_print(stack_a, stack_b, 2, pa, pa);
+	int	first;
+	int	second;
+	int	third;
+	int	min;
+	
+	first = (*stack)->number;
+	second = (*stack)->next->number;
+	third = (*stack)->next->next->number;
+	min = get_min(stack);
+	if (first == min && second > third)
+		do_and_print(stack, NULL, 2, rra, sa);
+	else if (((first < third && first > second) || \
+	(first > third && first < second)) && (second > third))
+		do_and_print(stack, NULL, 1, rra);
+	else if (((first < third && first > second) || \
+	(first > third && first < second)) && (second < third))
+			do_and_print(stack, NULL, 1, sa);
+	else if (first > third && first > second && second < third)
+		do_and_print(stack, NULL, 1, ra);
+	else if (first > third && first > second && second > third)
+		do_and_print(stack, NULL, 2, sa, rra);
+}
+
+/*sort a stack with size of maximum 5 element:
+- stack of 2 by rotating
+- stack of 3 by checking all cases and performing the adapt resolution solution
+- stack of 4 or 5 element by pushing the smallest (1 or 2) in b and sort the 3 
+	last with same method like a stack of 3 before return the smallest in a*/
+void	sort_little(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	if (size == 2)
+		do_and_print(stack_a, stack_b, 1, sa);
+	else if (size == 3)
+		sort_3(stack_a);
+	else
+	{
+		if (size == 5)
+			push_for_5(stack_a, stack_b);
+		push_for_4(stack_a, stack_b);
+		sort_3(stack_a);
+		if (size == 4)
+			do_and_print(stack_a, stack_b, 1, pa);
+		else
+			do_and_print(stack_a, stack_b, 2, pa, pa);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/16 16:53:39 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 11:59:29 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 	struct s_stack	*previous;
 }	t_stack;
+
+typedef struct s_mq
+{
+	int	q1;
+	int	med;
+	int	q3;
+}	t_mq;
 
 # include <unistd.h>
 # include "../libft/libft.h"
@@ -52,7 +59,11 @@ void	check_sort(t_stack **stack_a);
 void	ps_exit(t_stack **stack_a, t_stack **stack_b, int code);
 
 /*---SORTING---*/
-void	sort_3(t_stack **stack_a);
-void	sort_5(t_stack **stack_a, t_stack **stack_b);
+/*in: sort_little*/
+void	sort_little(t_stack **stack_a, t_stack **stack_b, int size);
+/*in: sort_big*/
+void	sort_big(t_stack **stack_a, t_stack **stack_b, int size);
+/*in: sort_big_utils*/
+t_mq	*get_mq(t_stack **stack_a, int size);
 
 #endif

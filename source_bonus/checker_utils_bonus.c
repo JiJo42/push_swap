@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/16 13:26:42 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 08:52:31 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,8 @@ void	check_sort(t_stack **stack_a, t_stack **stack_b, int code)
 /*exit clear and put message*/
 void	checker_exit(t_stack **stack_a, t_stack **stack_b, int code)
 {
-	if (stack_a)
-		stackclear(stack_a);
-	if (stack_b)
-		stackclear(stack_b);
+	stackclear(stack_a);
+	stackclear(stack_b);
 	if (code != OK)
 	{
 		if (code == ERROR)

@@ -6,7 +6,7 @@
 #    By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 09:56:45 by dleclerc          #+#    #+#              #
-#    Updated: 2024/12/11 13:26:29 by dleclerc         ###   ########.fr        #
+#    Updated: 2024/12/17 15:16:51 by dleclerc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,65 +50,75 @@ do_clean 	:= 	1
 
 
 #-Source----------------------------------------------#
-SRC			=	source/ft_strlen.c						\
-				source/ft_atoi.c						\
-				source/ft_atol.c						\
-				source/ft_strlcpy.c						\
-				source/ft_strlcat.c						\
-				source/ft_strnstr.c						\
-				source/ft_memset.c						\
-				source/ft_memcpy.c						\
-				source/ft_memmove.c						\
-				source/ft_bzero.c						\
-				source/ft_strdup.c						\
-				source/ft_isalpha.c						\
-				source/ft_isdigit.c						\
-				source/ft_isalnum.c						\
-				source/ft_isascii.c						\
-				source/ft_isprint.c						\
-				source/ft_tolower.c						\
-				source/ft_toupper.c						\
-				source/ft_strchr.c						\
-				source/ft_strrchr.c						\
-				source/ft_strncmp.c						\
-				source/ft_memchr.c						\
-				source/ft_memcmp.c						\
-				source/ft_calloc.c						\
-				source/ft_itoa.c						\
-				source/ft_substr.c						\
-				source/ft_strjoin.c						\
-				source/ft_putchar_fd.c					\
-				source/ft_putstr_fd.c					\
-				source/ft_putendl_fd.c					\
-				source/ft_putnbr_fd.c					\
-				source/ft_split.c						\
-				source/ft_strtrim.c						\
-				source/ft_strmapi.c						\
-				source/ft_striteri.c					\
-				source/ft_lstnew.c						\
-				source/ft_lstadd_front.c				\
-				source/ft_lstsize.c						\
-				source/ft_lstlast.c						\
-				source/ft_lstadd_back.c					\
-				source/ft_lstdelone.c					\
-				source/ft_lstclear.c					\
-				source/ft_lstiter.c						\
-				source/ft_lstmap.c						\
-				source/ft_printf.c						\
-				source/ft_printf_fd.c					\
-				source/get_next_line.c					\
-				source/printf_dir/ft_putchar_pf.c		\
-				source/printf_dir/ft_putstr_pf.c		\
-				source/printf_dir/ft_putnbrs_pf.c		\
-				source/printf_dir/ft_puthex_pf.c		\
-				source/printf_dir/ft_putadress_pf.c		\
-				source/printf_fd_dir/ft_putchar_pffd.c	\
-				source/printf_fd_dir/ft_putstr_pffd.c	\
-				source/printf_fd_dir/ft_putnbrs_pffd.c	\
-				source/printf_fd_dir/ft_puthex_pffd.c	\
-				source/printf_fd_dir/ft_putadress_pffd.c\
-				source/gnl_dir/gnl_fix_for_pipex.c		\
-				source/gnl_dir/get_next_line_utils.c
+#-Char-#
+SRC			+=	source/char/ft_isalpha.c	\
+				source/char/ft_isdigit.c	\
+				source/char/ft_isalnum.c	\
+				source/char/ft_isascii.c	\
+				source/char/ft_isprint.c	\
+				source/char/ft_tolower.c	\
+				source/char/ft_toupper.c
+#-Memory-#
+SRC			+=	source/memory/ft_memset.c	\
+				source/memory/ft_memcpy.c	\
+				source/memory/ft_memmove.c	\
+				source/memory/ft_memchr.c	\
+				source/memory/ft_memcmp.c	\
+				source/memory/ft_calloc.c	\
+				source/memory/ft_bzero.c
+#-Sting-#
+SRC			+=	source/string/ft_strlen.c	\
+				source/string/ft_strlcat.c	\
+				source/string/ft_strnstr.c	\
+				source/string/ft_strdup.c	\
+				source/string/ft_strchr.c	\
+				source/string/ft_strrchr.c	\
+				source/string/ft_strmapi.c	\
+				source/string/ft_strncmp.c	\
+				source/string/ft_strlcpy.c	\
+				source/string/ft_strtrim.c	\
+				source/string/ft_striteri.c	\
+				source/string/ft_substr.c	\
+				source/string/ft_strjoin.c	\
+				source/string/ft_itoa.c		\
+				source/string/ft_split.c
+#-Number-#
+SRC			+=	source/number/ft_atoi.c	\
+				source/number/ft_atol.c	\
+				source/number/ft_insertion_sort.c
+#-Write_fd-#
+SRC			+=	source/write_fd/ft_putchar_fd.c	\
+				source/write_fd/ft_putstr_fd.c	\
+				source/write_fd/ft_putendl_fd.c	\
+				source/write_fd/ft_putnbr_fd.c	\
+				source/write_fd/ft_printf_fd.c
+#				#-Printf_fd_utils-#
+SRC			+=	source/write_fd/printf_fd/ft_putchar_pffd.c	\
+				source/write_fd/printf_fd/ft_putstr_pffd.c	\
+				source/write_fd/printf_fd/ft_putnbrs_pffd.c	\
+				source/write_fd/printf_fd/ft_puthex_pffd.c	\
+				source/write_fd/printf_fd/ft_putadress_pffd.c
+#-List-#
+SRC			+=	source/list/ft_lstsize.c	\
+				source/list/ft_lstnew.c	\
+				source/list/ft_lstlast.c	\
+				source/list/ft_lstadd_back.c\
+				source/list/ft_lstdelone.c	\
+				source/list/ft_lstclear.c	\
+				source/list/ft_lstiter.c	\
+				source/list/ft_lstmap.c		\
+				source/list/ft_lstadd_front.c
+#-Printf-#
+SRC			+=	source/printf/ft_printf.c		\
+				source/printf/ft_putchar_pf.c	\
+				source/printf/ft_putstr_pf.c	\
+				source/printf/ft_putnbrs_pf.c	\
+				source/printf/ft_puthex_pf.c	\
+				source/printf/ft_putadress_pf.c
+#-Get_next_line-#
+SRC			+=	source/get_next_line/get_next_line.c	\
+				source/get_next_line/gnl_fix_for_pipex.c\
+				source/get_next_line/get_next_line_utils.c
 #-Object----------------------------------------------#
 OBJ			=	${SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o}
 DIRS		=	$(sort $(shell dirname $(OBJ)))
