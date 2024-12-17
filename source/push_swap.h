@@ -6,23 +6,20 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:56:08 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/17 11:59:29 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:52:31 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <unistd.h>
+# include "../libft/libft.h"
+# include "operations/operations.h"
+
 # define NO_ERROR 0
 # define ERROR -1
 # define MEMORY_ERROR -2
-
-typedef struct s_stack
-{
-	int				number;
-	struct s_stack	*next;
-	struct s_stack	*previous;
-}	t_stack;
 
 typedef struct s_mq
 {
@@ -30,12 +27,6 @@ typedef struct s_mq
 	int	med;
 	int	q3;
 }	t_mq;
-
-# include <unistd.h>
-# include "../libft/libft.h"
-
-/*---OPERATION---*/
-# include "operations/operations.h"
 
 /*---PARSING---*/
 /*in: push_swap_parsing*/
@@ -64,6 +55,6 @@ void	sort_little(t_stack **stack_a, t_stack **stack_b, int size);
 /*in: sort_big*/
 void	sort_big(t_stack **stack_a, t_stack **stack_b, int size);
 /*in: sort_big_utils*/
-t_mq	*get_mq(t_stack **stack_a, int size);
+void	get_mq(t_stack **stack_a, int size, t_mq *data_mp);
 
 #endif

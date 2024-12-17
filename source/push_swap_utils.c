@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/17 08:51:55 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:51:11 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	check_sort(t_stack **stack_a)
 
 	first = *stack_a;
 	second = first->next;
-
 	while (second && first->number < second->number)
 	{
 		first = first->next;

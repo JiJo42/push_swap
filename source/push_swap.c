@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:40:14 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/17 11:29:52 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:59:10 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 	int		size;
-	
+
 	stack_a = NULL;
-	stack_b	= NULL;
+	stack_b = NULL;
 	if (argc < 2)
 		return (0);
 	parsing_ps(argc, argv, &stack_a);

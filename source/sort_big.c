@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 11:27:28 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/17 11:31:16 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:50:53 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	sort_big(t_stack **stack_a, t_stack **stack_b, int size)
 {
+	t_mq	data_mq;
+
 	(void)stack_b;
-	get_mq(stack_a, size);
+	get_mq(stack_a, size, &data_mq);
 }

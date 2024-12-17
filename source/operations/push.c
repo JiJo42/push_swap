@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 13:22:30 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/12 11:10:14 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:02:51 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	push_a(t_stack **stack_a, t_stack **stack_b)
 			*stack_b = (*stack_b)->next;
 			if (*stack_b)
 				(*stack_b)->previous = NULL;
-			(*stack_a)->next = NULL;	
+			(*stack_a)->next = NULL;
 		}
 	}
 }
@@ -57,7 +57,7 @@ void	push_b(t_stack **stack_a, t_stack **stack_b)
 			*stack_a = (*stack_a)->next;
 			if (*stack_a)
 				(*stack_a)->previous = NULL;
-			(*stack_b)->next = NULL;			
+			(*stack_b)->next = NULL;
 		}
 	}
 }

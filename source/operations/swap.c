@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:21:55 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/12 12:06:33 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:01:05 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	swap_a(t_stack **stack_a)
 			(*stack_a)->next = NULL;
 		(*stack_a)->previous->previous = NULL;
 		(*stack_a)->previous->next = *stack_a;
-		*stack_a = (*stack_a)->previous;	
+		*stack_a = (*stack_a)->previous;
 	}
 }
 
@@ -46,7 +46,7 @@ void	swap_b(t_stack **stack_b)
 			(*stack_b)->next = NULL;
 		(*stack_b)->previous->previous = NULL;
 		(*stack_b)->previous->next = *stack_b;
-		*stack_b = (*stack_b)->previous;	
+		*stack_b = (*stack_b)->previous;
 	}
 }
 

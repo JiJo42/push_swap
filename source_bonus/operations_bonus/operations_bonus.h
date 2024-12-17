@@ -6,25 +6,12 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 09:13:12 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 18:22:39 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:56:39 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OPERATIONS_BONUS_H
 # define OPERATIONS_BONUS_H
-
-/*define code for more efficient print of operations*/
-# define sa 100
-# define sb 101
-# define ss 102
-# define pa 103
-# define pb 104
-# define ra	105
-# define rb 106
-# define rr 107
-# define rra 108
-# define rrb 109
-# define rrr 110
 
 # include <unistd.h>
 # include <stdarg.h>

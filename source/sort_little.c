@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/13 14:45:11 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/17 09:48:31 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 15:59:31 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,15 @@ static void	push_for_5(t_stack **stack_a, t_stack **stack_b)
 		locate++;
 	}
 	if (locate == 1)
-		do_and_print(stack_a, stack_b, 1, pb);
+		do_and_print(stack_a, stack_b, 1, PB);
 	else if (locate == 2)
-		do_and_print(stack_a, stack_b, 2, sa, pb);
+		do_and_print(stack_a, stack_b, 2, SA, PB);
 	else if (locate == 3)
-		do_and_print(stack_a, stack_b, 3, ra, ra, pb);
+		do_and_print(stack_a, stack_b, 3, RA, RA, PB);
 	else if (locate == 4)
-		do_and_print(stack_a, stack_b, 3, rra, rra, pb);
+		do_and_print(stack_a, stack_b, 3, RRA, RRA, PB);
 	else if (locate == 5)
-		do_and_print(stack_a, stack_b, 2, rra, pb);
+		do_and_print(stack_a, stack_b, 2, RRA, PB);
 }
 
 /*find and push in b the smallest element of a stack of 4*/
@@ -72,13 +72,13 @@ static void	push_for_4(t_stack **stack_a, t_stack **stack_b)
 		locate++;
 	}
 	if (locate == 1)
-		do_and_print(stack_a, stack_b, 1, pb);
+		do_and_print(stack_a, stack_b, 1, PB);
 	else if (locate == 2)
-		do_and_print(stack_a, stack_b, 2, sa, pb);
+		do_and_print(stack_a, stack_b, 2, SA, PB);
 	else if (locate == 3)
-		do_and_print(stack_a, stack_b, 3, ra, ra, pb);
+		do_and_print(stack_a, stack_b, 3, RA, RA, PB);
 	else if (locate == 4)
-		do_and_print(stack_a, stack_b, 2, rra, pb);
+		do_and_print(stack_a, stack_b, 2, RRA, PB);
 }
 
 /*sort a stack of 3 elements by checking all cases and
@@ -89,23 +89,23 @@ static void	sort_3(t_stack **stack)
 	int	second;
 	int	third;
 	int	min;
-	
+
 	first = (*stack)->number;
 	second = (*stack)->next->number;
 	third = (*stack)->next->next->number;
 	min = get_min(stack);
 	if (first == min && second > third)
-		do_and_print(stack, NULL, 2, rra, sa);
+		do_and_print(stack, NULL, 2, RRA, SA);
 	else if (((first < third && first > second) || \
 	(first > third && first < second)) && (second > third))
-		do_and_print(stack, NULL, 1, rra);
+		do_and_print(stack, NULL, 1, RRA);
 	else if (((first < third && first > second) || \
 	(first > third && first < second)) && (second < third))
-			do_and_print(stack, NULL, 1, sa);
+		do_and_print(stack, NULL, 1, SA);
 	else if (first > third && first > second && second < third)
-		do_and_print(stack, NULL, 1, ra);
+		do_and_print(stack, NULL, 1, RA);
 	else if (first > third && first > second && second > third)
-		do_and_print(stack, NULL, 2, sa, rra);
+		do_and_print(stack, NULL, 2, SA, RRA);
 }
 
 /*sort a stack with size of maximum 5 element:
@@ -116,7 +116,7 @@ static void	sort_3(t_stack **stack)
 void	sort_little(t_stack **stack_a, t_stack **stack_b, int size)
 {
 	if (size == 2)
-		do_and_print(stack_a, stack_b, 1, sa);
+		do_and_print(stack_a, stack_b, 1, SA);
 	else if (size == 3)
 		sort_3(stack_a);
 	else
@@ -126,8 +126,8 @@ void	sort_little(t_stack **stack_a, t_stack **stack_b, int size)
 		push_for_4(stack_a, stack_b);
 		sort_3(stack_a);
 		if (size == 4)
-			do_and_print(stack_a, stack_b, 1, pa);
+			do_and_print(stack_a, stack_b, 1, PA);
 		else
-			do_and_print(stack_a, stack_b, 2, pa, pa);
+			do_and_print(stack_a, stack_b, 2, PA, PA);
 	}
 }

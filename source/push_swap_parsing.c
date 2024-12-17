@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 14:55:43 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 13:34:51 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:00:37 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	**split_arg(char *arg, t_stack **stack_a)
 {
 	char	*trim;
 	char	**split;
-	
+
 	trim = ft_strtrim(arg, " ");
 	if (!trim)
 		parsing_exit(stack_a, NULL, MEMORY_ERROR);
@@ -71,12 +71,14 @@ static void	check_and_add_split(char **split, t_stack **stack_a)
 		index++;
 	}
 }
+
 /*Check if any inerger of the stack existe in one copy
 if it is not the case exit*/
 static void	check_double(t_stack *stack_a)
 {
 	t_stack	*be_check;
 	t_stack	*check_by;
+
 	be_check = stack_a;
 	check_by = be_check->next;
 	while (be_check->next)
@@ -101,7 +103,7 @@ void	parsing_ps(int argc, char **argv, t_stack **stack_a)
 
 	index = 1;
 	while (index < argc)
-	{ 
+	{
 		isvalid(argv[index], stack_a);
 		split = split_arg(argv[index], stack_a);
 		check_and_add_split(split, stack_a);

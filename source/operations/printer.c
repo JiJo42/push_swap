@@ -6,7 +6,7 @@
 /*   By: dleclerc <dleclerc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 14:07:28 by dleclerc          #+#    #+#             */
-/*   Updated: 2024/12/14 15:16:10 by dleclerc         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:03:08 by dleclerc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static void	search_and_do_3(t_stack **stack_a, t_stack **stack_b, int code)
 {
-	if (code == rra)
+	if (code == RRA)
 	{
 		reverse_rotate_a(stack_a);
 		ft_putstr_fd("rra\n", 1);
 	}
-	else if (code == rrb)
+	else if (code == RRB)
 	{
 		reverse_rotate_b(stack_b);
 		ft_putstr_fd("rrb\n", 1);
 	}
-	else if (code == rrr)
+	else if (code == RRR)
 	{
 		reverse_rotate_both(stack_a, stack_b);
 		ft_putstr_fd("rrr\n", 1);
@@ -33,22 +33,22 @@ static void	search_and_do_3(t_stack **stack_a, t_stack **stack_b, int code)
 
 static void	search_and_do_2(t_stack **stack_a, t_stack **stack_b, int code)
 {
-	if (code == pb)
+	if (code == PB)
 	{
 		push_b(stack_a, stack_b);
 		ft_putstr_fd("pb\n", 1);
 	}
-	else if (code == ra)
+	else if (code == RA)
 	{
 		rotate_a(stack_a);
 		ft_putstr_fd("ra\n", 1);
 	}
-	else if (code == rb)
+	else if (code == RB)
 	{
 		rotate_b(stack_b);
 		ft_putstr_fd("rb\n", 1);
 	}
-	else if (code == rr)
+	else if (code == RR)
 	{
 		rotate_both(stack_a, stack_b);
 		ft_putstr_fd("rr\n", 1);
@@ -59,22 +59,22 @@ static void	search_and_do_2(t_stack **stack_a, t_stack **stack_b, int code)
 
 static void	search_and_do(t_stack **stack_a, t_stack **stack_b, int code)
 {
-	if (code == sa)
+	if (code == SA)
 	{
 		swap_a(stack_a);
 		ft_putstr_fd("sa\n", 1);
 	}
-	else if (code == sb)
+	else if (code == SB)
 	{
 		swap_b(stack_b);
 		ft_putstr_fd("sb\n", 1);
 	}
-	else if (code == ss)
+	else if (code == SS)
 	{
 		swap_both(stack_a, stack_b);
 		ft_putstr_fd("ss\n", 1);
 	}
-	else if (code == pa)
+	else if (code == SA)
 	{
 		push_a(stack_a, stack_b);
 		ft_putstr_fd("pa\n", 1);
@@ -86,8 +86,8 @@ static void	search_and_do(t_stack **stack_a, t_stack **stack_b, int code)
 void	do_and_print(t_stack **stack_a, t_stack **stack_b, int size, ...)
 {
 	va_list	codes;
-	int code;
-	
+	int		code;
+
 	va_start(codes, size);
 	while (size)
 	{
